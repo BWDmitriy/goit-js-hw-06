@@ -1,84 +1,27 @@
-const sortByDescendingFriendCount = users => {
-  const sortedByDescendingFriendCount = users.toSorted(
-    (userFirst, userSecond) =>
-      userSecond.friends.length - userFirst.friends.length
-  );
-  return sortedByDescendingFriendCount;
-};
+class StringBuilder {
+  #value;
+  constructor(value) {
+    this.#value = value;
+  }
+  getValue() {
+    return this.#value;
+  }
+  padStart(pad) {
+    this.#value = pad + this.#value;
+  }
+  padEnd(pad) {
+    this.#value = this.#value + pad;
+  }
+  padBoth(pad) {
+    this.#value = pad + this.#value + pad;
+  }
+}
 
-console.log(
-  sortByDescendingFriendCount([
-    {
-      name: 'Moore Hensley',
-      friends: ['Sharron Pace'],
-      gender: 'male',
-    },
-    {
-      name: 'Sharlene Bush',
-      friends: ['Briana Decker', 'Sharron Pace'],
-      gender: 'female',
-    },
-    {
-      name: 'Ross Vazquez',
-      friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
-      gender: 'male',
-    },
-    {
-      name: 'Elma Head',
-      friends: ['Goldie Gentry', 'Aisha Tran'],
-      gender: 'female',
-    },
-    {
-      name: 'Carey Barr',
-      friends: ['Jordan Sampson', 'Eddie Strong'],
-      gender: 'male',
-    },
-    {
-      name: 'Blackburn Dotson',
-      friends: ['Jacklyn Lucas', 'Linda Chapman'],
-      gender: 'male',
-    },
-    {
-      name: 'Sheree Anthony',
-      friends: ['Goldie Gentry', 'Briana Decker'],
-      gender: 'female',
-    },
-  ])
-);
-// [
-//   {
-//     name: "Ross Vazquez",
-//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Carey Barr",
-//     friends: ["Jordan Sampson", "Eddie Strong"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Blackburn Dotson",
-//     friends: ["Jacklyn Lucas", "Linda Chapman"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Moore Hensley",
-//     friends: ["Sharron Pace"],
-//     gender: "male"
-//   }
-// ]
+const builder = new StringBuilder('.');
+console.log(builder.getValue()); // "."
+builder.padStart('^');
+console.log(builder.getValue()); // "^."
+builder.padEnd('^');
+console.log(builder.getValue()); // "^.^"
+builder.padBoth('=');
+console.log(builder.getValue()); // "=^.^="
